@@ -7,6 +7,5 @@ branchName=$(git name-rev --name-only HEAD) #現在のブランチ名取得
 issueId=$($branchName | cut -d '/' -f 2 | sed -e  "s/[^0-9]//g"`)") #issueIdを取得
 firstLine=$(head -n1 $1)
 
-if [ -z "$firstLine"  ] ;then # 最初の行が空行かチェックして、amend でないことを確認
-    sed -i "1s/^/($issueId) \n/" $1 # コミットメッセージの先頭に (XXXX) という文字列でブランチの情報を追加。
-fi
+msg="("$issueId")"
+$msg >> $1
