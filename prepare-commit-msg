@@ -4,7 +4,7 @@
 #コミット -> コミット（#10）
 
 branchName=$(git name-rev --name-only HEAD) #現在のブランチ名取得
-issueId=$($branchName | cut -d '/' -f 2 | sed -e  "s/[^0-9]//g") #issueIdを取得
+issueId=$(echo $branchName | cut -d '/' -f 2 | sed -e  "s/[^0-9]//g") #issueIdを取得
 issueIdMsg="(${issueId})"
 
 echo $issueIdMsg >> $1
